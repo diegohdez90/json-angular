@@ -4,21 +4,31 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <body>
 
-<div ng-app="myApp" ng-controller="customersCtrl"> 
+<div ng-app="myApp" ng-controller="customersCtrl" class="container"> 
 
-<table class="table">
-  <tr ng-repeat="x in biseles">
-    <td>{{ x.Folio }}</td>
-    <td>{{ x.Referencia }}</td>
-    <td>{{ x.Materiales }}</td>
-    <td>{{ x.Micas }}</td>
-    <td>{{ x.Armazones }}</td>
-    <td>{{ x.Tratamiento }}</td>
-    <td>{{ x.Tipo }}</td>
+    <div class="jumbotron">
+        <table class="table">
+          <tr>
+            <th>Folio</th>
+            <th>Referencia</th>
+            <th>Materiales</th>
+            <th>Micas</th>
+            <th>Armazones</th>
+            <th>Tratamiento</th>
+            <th>Tipo</th>
+          </tr>
+          <tr ng-repeat="x in biseles">
+            <td>{{ x.Folio }}</td>
+            <td>{{ x.Referencia }}</td>
+            <td>{{ x.Materiales }}</td>
+            <td>{{ x.Micas }}</td>
+            <td>{{ x.Armazones }}</td>
+            <td>{{ x.Tratamiento }}</td>
+            <td>{{ x.Tipos }}</td>
 
-  </tr>
-</table>
-
+          </tr>
+        </table>
+    </div>
 </div>
 
 <script>
