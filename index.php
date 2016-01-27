@@ -8,7 +8,7 @@
 
     <div class="jumbotron">
         <table class="table">
-          <tr>
+          <thead>
             <th>Folio</th>
             <th>Referencia</th>
             <th>Materiales</th>
@@ -16,17 +16,18 @@
             <th>Armazones</th>
             <th>Tratamiento</th>
             <th>Tipo</th>
-          </tr>
-          <tr ng-repeat="x in biseles">
-            <td>{{ x.Folio }}</td>
-            <td>{{ x.Referencia }}</td>
-            <td>{{ x.Materiales }}</td>
-            <td>{{ x.Micas }}</td>
-            <td>{{ x.Armazones }}</td>
-            <td>{{ x.Tratamiento }}</td>
-            <td>{{ x.Tipos }}</td>
-
-          </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="x in biseles">
+                <td>{{ x.Folio }}</td>
+                <td>{{ x.Referencia }}</td>
+                <td>{{ x.Materiales }}</td>
+                <td>{{ x.Micas }}</td>
+                <td>{{ x.Armazones }}</td>
+                <td>{{ x.Tratamiento }}</td>
+                <td>{{ x.Tipos }}</td>
+              </tr>
+          </tbody>
         </table>
     </div>
 </div>

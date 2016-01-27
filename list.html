@@ -1,0 +1,67 @@
+<html ng-app="myApp">
+	<head>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+		<style type="text/css">
+		    ul>li, a{cursor: pointer;}
+		</style>
+	</head>
+	<body ng-controller="PedidosCtrl">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">Page Size
+					<select ng-model="entryLimit" class="form-control">
+						<option>5</option>
+						<option>10</option>
+						<option>20</option>
+						<option>50</option>
+						<option>100</option>
+					</select>
+				</div>
+				<div class="col-md-3">Filter
+					<input type="text" ng-model="search" ng-change="filter()" placeholder="Filter" class="form-control">
+				</div>
+				<div class="col-md-4">
+					<h5>Filtered {{filtered.length}} de {{totalItems}} Pedidos</h5>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12" ng-show="filteredItems > 0">
+					<table class="table table-stripped table-bordered">
+						<thead>
+							<th>Foiio&nbsp;<a ng-click="sort_by('folio');"><i class="glyphicon glyphicon-sort"></i></a></th>
+							<th>Referencia&nbsp;<a ng-click="sort_by('ref');"><i class="glyphicon glyphicon-sort"></i></a></th>
+							<th>Materiales&nbsp;<a ng-click="sort_by('materiales');"><i class="glyphicon glyphicon-sort"></i></a></th>
+							<th>Micas&nbsp;<a ng-click="sort_by('micas');"><i class="glyphicon glyphicon-sort"></i></a></th>
+							<th>Armazones&nbsp;<a ng-click="sort_by('armazon');"><i class="glyphicon glyphicon-sort"></i></a></th>
+							<th>Tratamiento&nbsp;<a ng-click="sort_by('tratamiento');"><i class="glyphicon glyphicon-sort"></i></a></th>
+							<th>Tipo&nbsp;<a ng-click="sort_by('tipo');"><i class="glyphicon glyphicon-sort"></i></a></th>		
+						</thead>
+						<tbody>
+							<tr ng-repeat="data in filtered = (list | filter:search | orderBy : predicate : reverse) | startFrom:(currentPage-1)*entryLimit | limitTo:entryLimit">
+								<td>{{data.folio}}</td>
+								<td>{{data.ref}}</td>
+								<td>{{data.materiales}}</td>
+								<td>{{data.micas}}</td>
+								<td>{{data.armazon}}</td>
+								<td>{{data.tratamiento}}</td>
+								<td>{{data.tipo}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="col-md-12" ng-show="filteredItems == 0">
+						<div class="col-md-12">
+							<h4>No hay Registros con esos datos.</h4>
+						</div>
+					</div>
+					<div class="col-md-12" ng-show="filteredItems > 0">
+						<div pagination="" page="currentPage" max-size="10" on-select-page="setPage(page)" boundary-links="true" total-items="filteredItems" items-per-page="entryLimit" class="pagination-small" previous-text="&laquo;" next-text="&raquo;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
